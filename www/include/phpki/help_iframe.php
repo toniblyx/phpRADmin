@@ -1,0 +1,1 @@
+<iframe src="include/phpki/help/glossary.html" align="left" name="iframe" width="600" marginwidth="0" height=1500" marginheight="0" scrolling="auto" frameborder="0"></iframe>

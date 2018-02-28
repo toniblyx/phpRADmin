@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>Operators Help Page</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body link="black" alink="black">
+<center>
+<table border=0 width=540 cellpadding=1 cellspacing=1>
+<tr valign=top>
+<td width=340></td>
+<td bgcolor="888888" width=400>
+	<table border=0 width=100% cellpadding=2 cellspacing=0>
+	<tr bgcolor="#aaaaaa" align=right valign=top><th><font color="white">Operators Help Page</font>&nbsp;</th></tr>
+	</table>
+</td></tr>
+<tr bgcolor="888888" valign=top><td colspan=2>
+	<table border=0 width=100% cellpadding=12 cellspacing=0 bgcolor="#e6e6e6" valign=top>
+	<tr><td>
+<br>
+<center>
+<pre>
+	   Additional operators other than = may be used for the attributes 
+	   in either the check item, or reply item list.
+       The following is a list of operators, and their 
+	   meaning.
+
+       Attribute = Value
+            Not  allowed  as  a  check  item  for RADIUS protocol 
+			attributes.  It is allowed for server configuration
+            attributes (Auth-Type, etc), and sets the value of on 
+			attribute, only if there is no other  item  of  the
+            same attribute.
+            As a reply item, it means "add the item to the reply 
+			list, but only if there is no other item of the same
+            attribute."
+
+       Attribute := Value
+            Always matches as a check item, and replaces in the 
+			configuration items any attribute of the  same  name.
+            If no attribute of that name appears in the request, 
+			then this attribute is added.
+            As a reply item, it has an identical meaning, but for 
+			the reply items, instead of the request items.
+
+       Attribute == Value
+            As a check item, it matches if the named attribute is 
+			present in the request, AND has the given value.
+            Not allowed as a reply item.
+
+       Attribute += Value
+            Always  matches  as  a check item, and adds the current 
+			attribute with value to the list of configuration
+            items.
+            As a reply item, it has an identical meaning, but the 
+			attribute is added to the reply items.
+
+       Attribute != Value
+            As a check item, matches if the given attribute is in 
+			the request, AND does not have the given value.
+            Not allowed as a reply item.
+
+       Attribute > Value
+            As a check item, it matches if the request contains an 
+			attribute with a value greater than the one given.
+            Not allowed as a reply item.
+
+       Attribute >= Value
+            As  a  check item, it matches if the request contains 
+			an attribute with a value greater than, or equal to
+            the one given.
+            Not allowed as a reply item.
+
+       Attribute < Value
+            As a check item, it matches if the request contains an 
+			attribute with a value less than the one given.
+            Not allowed as a reply item.
+
+       Attribute <= Value
+            As a check item, it matches if the request contains an 
+			attribute with a value less than, or equal to  the
+            one given.
+            Not allowed as a reply item.
+
+       Attribute =~ Expression
+            As  a check item, it matches if the request contains an 
+			attribute which matches the given regular expres-
+            sion.  This operator may only be applied to string attributes.
+            Not allowed as a reply item.
+
+       Attribute !~ Expression
+            As a check item, it matches if the request contains an 
+			attribute which does not match the  given  regular
+            expression.  This operator may only be applied to string 
+			attributes.
+            Not allowed as a reply item.
+
+       Attribute =* Value
+            As a check item, it matches if the request contains the 
+			named attribute, no matter what the value is.
+            Not allowed as a reply item.
+
+       Attribute !* Value
+            As a check item, it matches if the request does not contain 
+			the named attribute, no matter what the value
+            is.
+            Not allowed as a reply item.
+			
+</pre>
+</td></tr>
+<tr><td align=center>
+<a href="javascript:window.close();"><b>Close Window</b></a>
+</td></tr>
+</center>
+</table>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,140 @@
+HOME			= /usr/local/phpradmin/conf/phpki-store
+RANDFILE		= /usr/local/phpradmin/conf/phpki-store/.rnd
+dir			= /usr/local/phpradmin/conf/phpki-store/CA
+certs			= /usr/local/phpradmin/conf/phpki-store/CA/certs
+crl_dir			= /usr/local/phpradmin/conf/phpki-store/CA/crl
+database		= /usr/local/phpradmin/conf/phpki-store/CA/index.txt
+new_certs_dir		= /usr/local/phpradmin/conf/phpki-store/CA/newcerts
+private_dir		= /usr/local/phpradmin/conf/phpki-store/CA/private
+serial			= /usr/local/phpradmin/conf/phpki-store/CA/serial
+certificate		= /usr/local/phpradmin/conf/phpki-store/CA/certs/cacert.pem
+crl			= /usr/local/phpradmin/conf/phpki-store/CA/crl/cacrl.pem
+private_key		= /usr/local/phpradmin/conf/phpki-store/CA/private/cakey.pem
+crl_extensions		= crl_ext
+default_days		= 365
+default_crl_days	= 30
+preserve	 	= no
+default_md	 	= md5
+
+[ ca ]
+default_ca		= email_cert
+
+[ root_cert ]
+x509_extensions        = root_ext
+default_days           = 3650
+policy                 = policy_supplied
+
+[ email_cert ]
+x509_extensions        = email_ext
+default_days           = 365
+policy                 = policy_supplied
+
+[ server_cert ]
+x509_extensions        = server_ext
+default_days           = 365
+policy                 = policy_supplied
+
+[ ipsec_cert ]
+x509_extensions        = ipsec_ext
+default_days           = 365
+policy                 = policy_supplied
+
+
+[ policy_supplied ]
+countryName            = supplied
+stateOrProvinceName    = supplied
+localityName           = supplied
+organizationName       = supplied
+organizationalUnitName = supplied
+commonName             = supplied
+emailAddress           = supplied
+
+[ root_ext ]
+basicConstraints       = CA:true
+keyUsage               = cRLSign, keyCertSign
+nsCertType             = sslCA, emailCA, objCA
+subjectKeyIdentifier   = hash
+subjectAltName         = email:copy
+crlDistributionPoints  = URI:http://servidor/phpradmin/include/phpki/index.php?stage=dl_crl
+nsComment              = "PHPki/OpenSSL Generated Root Certificate Authority"
+#nsCaRevocationUrl	= ns_revoke_query.php?
+nsCaPolicyUrl          = http://servidor/phpradmin/include/phpki/policy.html
+
+[ email_ext ]
+basicConstraints       = CA:false
+nsCertType             = client, email
+keyUsage               = critical, nonRepudiation, digitalSignature, keyEncipherment
+extendedKeyUsage       = emailProtection, clientAuth
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always, issuer:always
+subjectAltName         = email:copy
+issuerAltName          = issuer:copy
+crlDistributionPoints  = URI:http://servidor/phpradmin/include/phpki/index.php?stage=dl_crl
+nsComment              = "PHPki/OpenSSL Generated Personal Certificate"
+nsBaseUrl              = http://servidor/phpradmin/include/phpki/
+nsRevocationUrl	       = ns_revoke_query.php?
+#nsRenewalUrl          =
+nsCaPolicyUrl          = http://servidor/phpradmin/include/phpki/policy.html
+#nsSslServerName       =
+
+[ server_ext ]
+basicConstraints        = CA:false
+keyUsage                = critical, digitalSignature, keyEncipherment
+nsCertType              = server
+extendedKeyUsage        = serverAuth
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always, issuer:always
+subjectAltName          = email:copy
+issuerAltName           = issuer:copy
+crlDistributionPoints  = URI:http://servidor/phpradmin/include/phpki/index.php?stage=dl_crl
+nsComment		= "PHPki/OpenSSL Generated Secure Server Certificate"
+nsBaseUrl		= http://servidor/phpradmin/include/phpki/
+nsRevocationUrl		= ns_revoke_query.php?
+nsCaPolicyUrl           = http://servidor/phpradmin/include/phpki/policy.html
+
+[ ipsec_ext ]
+basicConstraints        = CA:false
+keyUsage                = critical, nonRepudiation, keyEncipherment
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid:always, issuer:always
+subjectAltName          = email:copy
+
+[ crl_ext ]
+issuerAltName=issuer:copy
+authorityKeyIdentifier=keyid:always,issuer:always
+
+[ req ]
+default_bits		= 1024
+default_keyfile		= privkey.pem
+distinguished_name	= req_name
+string_mask		= nombstr
+req_extensions		= req_ext
+
+[ req_name]
+countryName			= Country Name (2 letter code)
+countryName_default		= US
+countryName_min			= 2
+countryName_max			= 2
+
+stateOrProvinceName		= State or Province Name (full name)
+stateOrProvinceName_default	= 
+
+localityName			= Locality Name (eg, city)
+localityName_default		= 
+
+0.organizationName		= Organization Name (eg, company)
+0.organizationName_default	=
+
+1.organizationName		= Second Organization Name (eg, company)
+1.organizationName_default	= 
+
+organizationalUnitName		= Organizational Unit Name (eg, section)
+organizationalUnitName_default	= 
+
+commonName			= Common Name (eg, YOUR name)
+
+emailAddress			= Email Address or Web URL
+
+[ req_ext ]
+basicConstraints = critical, CA:false
+

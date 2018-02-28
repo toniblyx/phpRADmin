@@ -1,0 +1,71 @@
+/*
+phpRADmin is developped under GPL Licence 2.0 :
+http://www.gnu.org/licenses/gpl.txt or read LICENSE file.
+
+Developed by : Toni de la Fuente (blyx) from Madrid and Alfacar (Granada), Spain  
+For information : toni@blyx.com http://blyx.com
+
+We are using Oreon for base code: http://www.oreon-project.org
+We are using Dialup Admin for user management 
+and many more things: http://www.freeradius.org
+We are using PHPKI for Certificates management: http://phpki.sourceforge.org/ 
+
+Thanks very much!!
+*/
+
+##################################################################
+Please, for help, info and support subscribe and use our
+project mailing lists:
+
+If you are user (thanks):
+http://lists.sourceforge.net/mailman/listinfo/phpradmin-users
+
+If you are develeper (thanks):
+http://lists.sourceforge.net/mailman/listinfo/phpradmin-devel
+##################################################################
+
+
+But phpRADmin is here for:
+
+phpRADmin coreteam
+
+    * Toni de la Fuente (blyx)
+
+      I have used Oreon code as framework,
+      Dialup Admin to manage users/clients,
+      PHPKI to manage certs and
+      phpconfig (from Asterisk project) to edit some files.
+
+      Thanks to the Free Software world.
+
+      Thanks to dmescal, vaquer0, dmartin, syvic, drico for their support.
+
+   Oreon
+A web based administration interface for Nagios
+monitoring server written in PHP
+
+      Authors:
+    * Thanks to Oreon Project
+    * Christophe Coraboeuf (Wistof)
+    * Julien Mathis (Julio)
+    * Romain Le Merlus (rom)
+
+   Dialup Admin
+A web based administration interface for the FreeRADIUS
+radius server written in PHP4
+Copyright (C) 2001,2002 Kostas Kalevras
+
+      Authors:
+    * Thanks to FreeRADIUS Project
+    * Kostas Kalevras (kkalev at noc.ntua.gr)
+    * Basilis Pappas (vpappas at noc.ntua.gr)
+    * Panagiotis Christias (christia at noc.ntua.gr)
+    * Thanasis Duitsis (aduitsis at noc.ntua.gr)
+
+   PHPKI
+A web based administration interface for OpenSSL
+to manage a CA server written in PHP
+
+      Authors:
+    * Thanks to PHPKI Project
+    * Eddie Roadcap (eddie at chazbear.com)

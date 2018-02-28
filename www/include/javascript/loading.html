@@ -1,0 +1,101 @@
+<!-- DEBUT DU SCRIPT -->
+ <STYLE>
+ v\:* {  BEHAVIOR: url(#default#VML) }
+ </STYLE>
+ <SCRIPT language="JavaScript1.2">
+ /*
+ FAIRE PATIENTER VOS VISITEURS 2
+ SCRIPT EDITE SUR L'EDITEUR JAVASCRIPT
+ http://www.editeurjavascript.com
+ 
+ PLACEZ CE SCRIPT JUSTE APRES LA BALISE <BODY>
+ */
+ 
+ /* PARAMETRAGE */
+ news_larg=400;
+ news_haut=50;
+ news_box_color='#FFFFFF';
+ news_cache_color='#96B7D8';
+ news_ligne_color='#000000';
+ news_box_font="Verdana";
+ news_box_fontcolor = "#FF9900";
+ news_box_fontsize = 11;
+ news_html = "Veuillez patienter... recherche en cours<BR>";
+ 
+ /* FONCTIONS */
+ 
+ function news_step_one()
+ 	{
+  	if(news_mode == 1)
+  		{
+  		news_hligne_long += 1;
+  		news_vligne_long += 1;
+ 		if(news_hligne_long > (news_larg+100))
+ 			news_mode = 2;
+  		}
+  	else
+  		{
+  		news_hligne_long -= 1;
+  		news_vligne_long -= 1;
+ 		if(news_hligne_long < news_larg)
+ 			news_mode = 1;
+  		}
+ 	var tempX = Math.round((news_sreen_X-news_hligne_long)/2);
+ 	var tempY = Math.round((news_sreen_Y-news_vligne_long)/2);
+ 	document.getElementById("ligne1").from=news_lign_X+","+tempY
+ 	document.getElementById("ligne1").to=news_lign_X+","+(tempY+news_vligne_long)
+ 	document.getElementById("ligne2").from=(news_lign_X+news_larg)+","+tempY
+ 	document.getElementById("ligne2").to=(news_lign_X+news_larg)+","+(tempY+news_vligne_long)
+ 	document.getElementById("ligne3").from=tempX+","+news_lign_Y
+ 	document.getElementById("ligne3").to=(tempX+news_hligne_long)+","+news_lign_Y
+ 	document.getElementById("ligne4").from=tempX+","+(news_lign_Y+news_haut)
+ 	document.getElementById("ligne4").to=(tempX+news_hligne_long)+","+(news_lign_Y+news_haut)
+ 	if(!news_load)
+ 		setTimeout("news_step_one()",1)
+ 	else 
+ 		{
+ 		document.getElementById("news_cache").innerHTML = '';
+ 		document.getElementById("news_cache").style.visibility = 'hidden';
+ 		}
+ 	}
+ 
+ function news_stop()
+ 	{
+ 	news_load=true
+ 	}
+ 
+ 
+ /* ACTIONS */
+ 
+ news_html_haut = '<TABLE WIDTH='+(news_larg-2)+' HEIGHT='+(news_haut-2)+'><TR><TD STYLE="font-family:'+news_box_font+';color:'+news_box_fontcolor+';font-size:'+news_box_fontsize+'px" ALIGN=center>';
+ news_html_bas = "</TD></TR></TABLE>";
+ 
+ news_hligne_long = news_larg+20;
+ news_vligne_long = news_haut+20;
+ news_alpha = 50;
+ news_mode = 1;
+ news_load = false;
+ 
+ news_sreen_X=document.body.clientWidth;
+ news_sreen_Y=document.body.clientHeight;
+ 
+ news_lign_X = Math.round((news_sreen_X-news_larg)/2);
+ news_lign_Y = Math.round((news_sreen_Y-news_haut)/2);
+ 
+ if(document.getElementById && document.all)
+ 	{
+ 	document.write('<DIV ID=news_cache STYLE="position:absolute;top:0;left:0;width:'+news_sreen_X+';height:'+news_sreen_Y+';z-index:5;background:'+news_cache_color+'">');
+ 	document.write('<DIV ID=news_box STYLE="position:absolute;top:'+news_lign_Y+';left:'+news_lign_X+';width:'+news_larg+';height:'+news_haut+';background:'+news_box_color+';z-index:30">');
+ 	document.write(news_html_haut+news_html+news_html_bas)
+ 	document.write('</DIV></DIV>');
+ 	code="<v:line id=ligne1 style='LEFT:0;POSITION:absolute;TOP:0;z-index:50' strokeweight='1pt' strokecolor='"+news_ligne_color+"'></v:line>";
+ 	code+="<v:line id=ligne2 style='LEFT:0;POSITION:absolute;TOP:0;z-index:50' strokeweight='1pt' strokecolor='"+news_ligne_color+"'></v:line>";
+ 	code+="<v:line id=ligne3 style='LEFT:0;POSITION:absolute;TOP:0;z-index:50' strokeweight='1pt' strokecolor='"+news_ligne_color+"'></v:line>";
+ 	code+="<v:line id=ligne4 style='LEFT:0;POSITION:absolute;TOP:0;z-index:50' strokeweight='1pt' strokecolor='"+news_ligne_color+"'></v:line>";
+ 	document.getElementById("news_cache").insertAdjacentHTML("afterBegin",code)
+ 
+ 	news_step_one();
+ 	window.onload = news_stop;
+ 	}
+ </SCRIPT>
+ <!-- FIN DU SCRIPT -->

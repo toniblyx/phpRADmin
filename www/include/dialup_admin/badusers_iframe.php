@@ -1,0 +1,1 @@
+<iframe src="include/dialup_admin/htdocs/badusers.php3?login=anyone" align="left" name="iframe" width="800" marginwidth="0" height="1100" marginheight="0" scrolling="no" frameborder=0></iframe>

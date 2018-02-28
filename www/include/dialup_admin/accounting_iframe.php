@@ -1,0 +1,1 @@
+<iframe src="include/dialup_admin/htdocs/accounting.php3" align="left" name="iframe" width="950" marginwidth="0" height="1100" marginheight="0" scrolling="no" frameborder=0></iframe>

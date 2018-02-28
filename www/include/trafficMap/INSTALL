@@ -1,0 +1,40 @@
+Network Weathermap
+version 1.1.1 (20040422)
+Panagiotis Christias, p.christias@noc.ntua.gr
+
+
+1. Description
+
+The network weathermap displays in a visual way the utilization of
+network links. The required data are acquired from graphs created
+arrows on a map representing the logical topology of the network.
+The resulted image is presented in a web page using extra DHTML and
+JavaScript code for web-over pop-ups, based on the OverLib JavaScript
+library. The image can be automatically generated via cron.
+
+ 
+2. Required software
+
+The network weathermap is written in Perl programming language. It is
+using the GD perl module for opening, manipulating and writing image
+files. The GD module requires the Gd Graphics Library (libgd). The Gd
+Graphics Library requires several libraries like freetype, libjpeg,
+libpng and libz.
+
+The current version of the network weathermap does not do any SNMP data
+acquisition but relies on MRTG for that task since MRTG does it in a
+simple and effective way. MRTG stores the values of the last SNMP query
+as HTML comments within the HTML file that creates for each network link:
+
+  <!-- maxin d 128563 --> <!-- maxout d 29795 -->
+  <!-- avin d 17219 --> <!-- avout d 18115 -->
+  <!-- cuin d 11369 --> <!-- cuout d 19663 -->
+  <!-- avmxin d 23106 --> <!-- avmxout d 18598 -->
+
+The network weathermap retrieves the HTML files directly from the file
+system or remotely from a specified web server using GNU wget, parses
+them and uses the current in and out values (cuin d and cuout d values)
+to generate the map.
+
+
+3. Installation and configu

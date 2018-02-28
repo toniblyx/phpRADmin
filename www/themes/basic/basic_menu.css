@@ -1,0 +1,266 @@
+/*
+phpRADmin is developped with GPL Licence 2.0 :
+http://www.gnu.org/licenses/gpl.txt
+Developped by : Toni de la Fuente (blyx)
+
+For information : toni@blyx.com
+*//* CSS Document */
+	
+	.tabTableTitle, .tabTableTitleON, .tabTableTitleMenu, .tabTableTitleItemRight, .tabTable, .tabTableMenu, .tabTableON, .tabTableMenuItemRight, .tabTable2, .tabTableForTab, .tabTableTitleResume, .tabTableWC 
+	{
+		font-family:Arial, Helvetica, Sans-Serif;
+	}
+	
+	.tabTableHome, .tabTableWithPadding, .tabTableTitleHome, .tabTableTitle, .tabTableTitleON, .tabTableTitleMenu, .tabTableTitleItemRight, .tabTable, .tabTableMenu, .tabTableON, .tabTableMenuItemRight, .tabTable2, .tabTableForTab, .tabTableTitleResume, .tabTableWC 
+	{
+		border-right: 1px solid #CCCCCC;
+		border-left: 1px solid #CCCCCC;
+	}
+	.tabTableWithPadding, 
+	{
+		border-bottom: 1px solid #CCCCCC;
+	}
+
+	/* For data table */
+
+	.dataTableTitle, .dataTableTitleLeft {
+		background-color: #E0DCDC;
+		border-bottom: 1px solid #CCCCCC;
+		text-align: center;
+		font-size:11px;
+		font-weight:bold;
+		font-family:arial, sans-serif;
+	}
+
+	.dataTableTitle, .dataTable {
+		border-left: 1px solid #CCCCCC;
+	}
+
+	.dataTable, .dataTableLeft {
+		background-color: #000000;
+		text-align: left;
+		font-size:10px;
+		font-family:arial, sans-serif;
+		padding-left:10px;
+	}
+
+	/* For mutli cell table */
+
+	.tabMultiCellTitleLeft, .tabMultiCellTitleRight, .tabMultiCellTitleCenter{
+		background-color: #E0DCDC;
+	}
+	
+	.tabMultiCellLeft, .tabMultiCellRight, .tabMultiCellCenter{
+		background-color: #E7E7E7;
+	}
+	
+	
+	.tabMultiCellTitleCenter, .tabMultiCellCenter, .tabMultiCellCenterBottom{
+		border-left: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+	}
+
+	.tabMultiCellTitleLeft, .tabMultiCellLeft, .tabMultiCellLeftBottom{
+		border-left: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+	}
+
+	.tabMultiCellTitleRight, .tabMultiCellRight, .tabMultiCellRightBottom{
+		border-right: 1px solid #CCCCCC;
+		border-left: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+	}
+
+	
+	/*  End Mutli cell table */
+	.tabTableTitle {
+		padding-left: 2px;
+		border-bottom: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+		background-color: #E0DCDC;
+		font-size: 12px;
+	}	
+	.tabTableTitleON {
+		padding-left: 2px;
+		border-bottom: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+		background-color: #C1CDFD;
+		font-size: 12px;
+		text-decoration:none;
+		color:#FFFFFF;
+		cursor:pointer;
+	}
+	.tabTableTitleHome {
+		padding-left: 2px;
+		border-top: 1px solid #CCCCCC;
+		background-color: #E0DCDC;
+	}
+	.tabTableTitleMenu {
+		padding-left: 7px;
+		border-bottom: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+		background-color: #E0DCDC;
+		font-size: 12px;
+	}
+	.tabTableTitleItemRight {
+		padding-left: 7px;
+		border-bottom: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+		background-color: #E0DCDC;
+		font-size: 12px;
+	}	
+	.tabTableHome {
+		padding-left: 5px;
+		border-top: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;
+		background-color: #E7E7E7; 
+	}	
+	.tabTable {
+		padding-left: 5px;
+		background-color: #E7E7E7; 
+		font-size: 11px;
+	}
+	.tabTableWithPadding {
+		padding-left: 10px;
+		padding-bottom: 10px;
+		padding-right: 10px;
+		background-color: #E7E7E7; 
+		font-size: 11px;
+	}
+	.tabTableMenu {
+		padding-left: 9px;
+		padding-bottom: 10px;
+		background-color: #E7E7E7; 
+		font-size: 11px;
+		border-bottom: 1px solid #CCCCCC;
+		margin-bottom:5px;
+	}
+	.tabTableMenuItemRight {
+		padding-left: 9px;
+		background-color: #E7E7E7; 
+		font-size: 11px;
+	}
+	
+	.tabTableON {
+		padding-left: 5px;
+		background-color: #C1CDFD; 
+		font-size: 11px;
+		color:#666;
+		text-decoration:none;
+		color:#000000;
+		cursor:pointer;
+	}
+	.tabTable2 {
+		padding-left: 5px;
+		border-top: 1px solid #CCCCCC;
+		border-bottom: 1px solid #CCCCCC;
+		background-color: #E7E7E7; 
+		font-size: 11px;
+	}
+	.tabTableForTab {
+		padding-top:10px;
+		border-bottom: 1px solid #CCCCCC;
+		background-color: #E7E7E7; 
+		font-size: 11px;
+	}
+	.tabTableTitleResume {
+		padding-left: 5px;
+		padding-right: 5px;
+		border-bottom: 1px solid #CCCCCC;
+		border-top: 1px solid #CCCCCC;
+		background-color: #E0DCDC;
+		background-position: left;
+		font-size: 12px;
+	}
+	.tabTableWC {
+		padding-left: 5px;
+		background-position: left;
+		font-size: 12px;
+		text-align:center;
+	}
+	
+	.txtlistleft{
+		font-family:Arial, Helvetica, Sans-Serif;
+		color:#666;
+	}	
+
+	.txtlistleft:hover{
+		text-decoration:none;
+		color:#FFFFFF;
+	}
+/* Style for banner */
+
+/* VALUE FOR TOP MENU */
+
+a.txtlist, a.txtlist:active, a.txtlist:visited, a.txtlist:hover, .txtlist
+{
+	font-family:Arial, Helvetica, Sans-Serif;
+	color:#666;
+	font-size:11px;
+}
+
+a.txtlist, a.txtlist:active, .txtlist
+{
+	text-decoration:none;
+}
+
+a.txtlist:hover
+{
+	text-decoration:underline;
+}
+
+.listresultON, .listresulthighlightON, .listprofil, .listprofillocked, .listprofilhighlight
+{
+	font-family:Arial, Helvetica, Sans-Serif;
+	font-size:11px;
+	text-align:center;
+}
+
+.listresultON
+{
+	background-color: #C1CDFD;
+	/* cursor:hand; */
+	cursor:pointer;
+	color:#FFFFFF;
+}
+
+.listresulthighlightON
+{
+	background-color: #D5AD28;
+	/* cursor:hand; */
+	cursor:pointer;
+	color:#FFFFFF;
+}
+
+.listresultON, .listprofil{
+	height:19px;
+}
+
+.list
+{
+	color:#CCC;
+}
+
+.listprofilright
+{
+	background-color:#EEEEEE;
+}
+
+.listprofil
+{
+	background-color:#E7E7E7;
+}
+.listprofilhighlight
+{
+	background-color:#D5AD28;
+}
+
+.listprofillocked
+{
+	background-color:#F1F1F1;
+}
+
+/* UNUSED STYLES */
+
+
+

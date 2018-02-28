@@ -1,0 +1,1 @@
+<iframe src="include/dialup_admin/htdocs/group_new.php3" align="left" name="iframe" width="600" marginwidth="0" height="1000" marginheight="0" scrolling="no" frameborder=0></iframe>

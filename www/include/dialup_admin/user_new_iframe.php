@@ -1,0 +1,1 @@
+<iframe src="include/dialup_admin/htdocs/user_new.php3" align="left" name="iframe" width="800" marginwidth="0" height="1000" marginheight="0" scrolling="auto" frameborder=0></iframe>

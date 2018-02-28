@@ -1,0 +1,258 @@
+project mailing lists:
+http://lists.sourceforge.net/mailman/listinfo/phpradmin-users
+http://lists.sourceforge.net/mailman/listinfo/phpradmin-devel
+
+Install instructions for Fedora Core 3, please contribute with install instructions for other linux, unix distributions (freebsd, etc).
+
+
+Preparing your system:
+
+Server Name:
+
+Edit your: /etc/hosts  
+127.0.0.1               localhost.localdomain localhost
+192.168.1.2             phpRADmin-server
+
+Edit /etc/sysconfig/network
+NETWORKING=yes
+HOSTNAME=phpRADmin-server
+
+Packages repositories:
+http://stanton-finley.net/fedora_core_3_installation_notes.html#Yum
+
+# rpm --import /usr/share/doc/fedora-release-*/*GPG-KEY*
+# wget http://dag.wieers.com/packages/RPM-GPG-KEY.dag.txt
+# wget http://dries.studentenweb.org/ayo/RPM-GPG-KEY.dries.txt
+# wget http://freshrpms.net/packages/RPM-GPG-KEY.txt
+# wget http://newrpms.sunsite.dk/gpg-pubkey-newrpms.txt
+# rpm --import RPM-GPG-KEY.dag.txt
+# rpm --import RPM-GPG-KEY.txt
+# rpm --import RPM-GPG-KEY.dries.txt
+# rpm --import gpg-pubkey-newrpms.txt
+
+(You can use "rpm --import URL" directly)
+
+# yum -y update
+
+# vi /etc/yum.repos.d/dag.repo
+___________________________________________________________________________________
+[dag]
+name=Dag RPM Repository for Fedora Core
+baseurl=http://apt.sw.be/fedora/$releasever/en/$basearch/dag/
+enabled=1
+gpgcheck=1
+___________________________________________________________________________________
+
+# vi /etc/yum.repos.d/freshrpms.repo
+___________________________________________________________________________________
+[core]
+name=FreshRPMS-Core
+baseurl=http://ayo.freshrpms.net/fedora/linux/$releasever/$basearch/core
+enabled=1
+gpgcheck=1
+#[extras]
+#name=Fedora Linux $releasever - $basearch - extras
+#baseurl=http://ayo.freshrpms.net/fedora/linux/$releasever/$basearch/extras
+#enabled=0
+gpgcheck=1
+#[alternatives]
+#name=Fedora Linux $releasever - $basearch - alternatives
+#baseurl=http://ayo.freshrpms.net/fedora/linux/$releaseve/$basearch/alternatives
+#enabled=0
+gpgcheck=1
+[updates]
+name=FreshRPMS-Updates
+baseurl=http://ayo.freshrpms.net/fedora/linux/$releasever/$basearch/updates
+enabled=1
+gpgcheck=1
+[freshrpms]
+name=FreshRPMS-Fresh
+baseurl=http://ayo.freshrpms.net/fedora/linux/$releasever/$basearch/freshrpms
+enabled=1
+gpgcheck=1
+___________________________________________________________________________________
+
+# yum -y update
+
+# yum -y install apt
+
+# vi /etc/apt/sources.list.d/dag.list
+___________________________________________________________________________________
+# Name: Dag RPM Repository
+# URL: http://dag.wieers.com/apt/
+### Dag RPM Repository for Fedora Core
+rpm http://apt.sw.be fedora/3/en/i386 dag
+___________________________________________________________________________________
+
+# vi /etc/apt/sources.list.d/freshrpms.list
+___________________________________________________________________________________
+# Name: FreshRPMS
+# URL: http://ayo.freshrpms.net/
+### Fedora Core
+rpm http://ayo.freshrpms.net fedora/linux/3/i386 freshrpms
+___________________________________________________________________________________
+
+vi /etc/apt/sources.list.d/newrpms.list
+___________________________________________________________________________________
+# Name: NewRPMS
+# URL: http://newrpms.sunsite.dk/
+### Fedora Core
+rpm http://newrpms.sunsite.dk/apt/ redhat/en/i386/fc3 newrpms
+___________________________________________________________________________________
+
+vi /etc/apt/sources.list.d/dries.list
+___________________________________________________________________________________
+# Name: Dries RPM Repository
+# URL: http://dries.studentenweb.org/apt/
+### Fedora Core
+rpm http://apt.sw.be dries/fedora/fc3/i386 dries
+___________________________________________________________________________________
+
+# apt-get update
+
+
+System security:
+
+SELinux:
+Remember to disable SElinux during installation process, if you are not sure please modify /etc/sysconfig/selinux like:
+___________________________________________________________________________________
+SELINUX=disabled
+SELINUXTYPE=targeted
+___________________________________________________________________________________
+
+IPtables:
+# vi /etc/sysconfig/iptables
+___________________________________________________________________________________
+# Firewall configuration written by system-config-securitylevel
+# Manual customization of this file is not recommended.
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+:RH-Firewall-1-INPUT - [0:0]
+-A INPUT -j RH-Firewall-1-INPUT
+-A FORWARD -j RH-Firewall-1-INPUT
+-A RH-Firewall-1-INPUT -i lo -j ACCEPT
+-A RH-Firewall-1-INPUT -p icmp --icmp-type any -j ACCEPT
+-A RH-Firewall-1-INPUT -p 50 -j ACCEPT
+-A RH-Firewall-1-INPUT -p 51 -j ACCEPT
+-A RH-Firewall-1-INPUT -p udp --dport 5353 -d 224.0.0.251 -j ACCEPT
+-A RH-Firewall-1-INPUT -p udp -m udp --dport 631 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 1812 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m udp -p udp --dport 1812 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 1813 -j ACCEPT
+-A RH-Firewall-1-INPUT -m state --state NEW -m udp -p udp --dport 1813 -j ACCEPT
+-A RH-Firewall-1-INPUT -j REJECT --reject-with icmp-host-prohibited
+COMMIT
+___________________________________________________________________________________
+
+# /etc/init.d/iptables restart
+
+
+Preparing Apache web Server:
+
+# apt-get install httpd mod_ssl php (install with dependences)
+# chkconfig httpd on
+# /etc/init.d/httpd start
+# netstat -an|egrep "80|443"
+tcp        0      0 :::80                       :::*                        LISTEN
+tcp        0      0 :::443                      :::*                        LISTEN
+
+
+Preparing Mysql Server:
+
+# apt-get install mysql mysql-server php-mysql (install with dependences)
+# chkconfig mysqld on
+
+# vi /etc/my.cnf (add skip-innodb)
+___________________________________________________________________________________
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+skip-innodb
+
+[mysql.server]
+user=mysql
+basedir=/var/lib
+
+[safe_mysqld]
+err-log=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+___________________________________________________________________________________
+
+
+# /etc/init.d/mysqld start
+
+Set your root db password:
+# mysqladmin password your-password
+
+# mysql -u root -p
+Enter password:
+mysql> create database phpradmin;
+mysql> GRANT ALL PRIVILEGES ON phpradmin.* TO 'phpradmin'@'localhost' IDENTIFIED BY 'your-db-password';
+mysql> exit
+
+
+Preparing FreeRADIUS Server:
+
+# apt-get install freeradius freeradius-mysql radiusclient net-snmp (install with dependences)
+# chkconfig radiusd on
+
+You can config and install your FreeRADIUS files radiusd.conf and sql.conf (if is an included) later your install phpradmin.
+
+
+Install dependences:
+
+# apt-get install  php-gd php-snmp perl-DateManip perl-MD5 net-snmp-utils freetype rrdtool rrdutils perl-rrdtool sudo  (install with dependences)
+
+To improve performance install php-eaccelerator
+
+
+Config php and Apache:
+
+# vi /etc/php.ini
+memory_limit = 16M 
+
+
+Download phpRADmin from www.phpradmin.org. Decompress and copy file to your desired location, very recommended /usr/local/phpradmin:
+
+# tar zxvf phpradmin-28-06-2006.tar.gz
+# mv  phpradmin-28-06-2006 /usr/local/phpradmin
+
+*NOTE: if you install phpRADmin into /usr/local/phpradmin folder you do not need to make more changes in some files, and you will have phpRADmin usefull in less time.
+
+Copy <phpradmin_install_dir>/apache_include_phpradmin.conf file to /etc/httpd/conf.d/ , modify as your needs and restart apache "/etc/init.d/httpd restart" or copy file content to your httpd.conf file and restart and restart Apache.
+
+
+Create and install database, please, do not modify next steps with database and userdb creation (is pre-alpha version ;):
+
+# mysql -u root -p
+mysql> create database phpradmin;
+mysql> GRANT ALL PRIVILEGES ON phpradmin.* TO phpradmin@localhost IDENTIFIED BY 'passwordpra'; 
+mysql> quit
+
+cd /usr/local/phpradmin
+# mysql -u root -p phpradmin < conf/phpradmin_mysql.sql
+
+Adjust phpradmin access database:
+# vi www/phpradmin.conf.php
+$conf_pra['host'] = "localhost";
+$conf_pra['user'] = "phpradmin";
+$conf_pra['password'] = "passwordpra";
+$conf_pra['db'] = "phpradmin";
+$conf_pra['dbtype'] = "mysql";
+$conf_pra['sqlport'] = "3306";
+
+Open your browser and put https://yourserverip/phpradmin and follow all instructions.
+
+Remember to configure FreeRADIUS to connect to phpradmin database (/etc/raddb/sql.conf) and modify radiusd.conf to authenticate to sql database.
+
+Discover, learn and teach phpRADmin.
+
+Help us to make it better.
+
+NOTE: This documentation is from scratch and over CC 2.5 License.

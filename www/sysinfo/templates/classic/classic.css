@@ -1,0 +1,38 @@
+H1 {
+  color: #000000;
+  background-color: transparent;
+  text-decoration: none;
+  font-family: Verdana,Helvetica,sans-serif;
+  font-size: 20px;
+}
+select {
+    color: #e6e6e6;
+    text-decoration: none;
+    font-family: Verdana,Helvetica,sans-serif;
+    font-size: 10px;
+    font-weight: normal;
+}
+table
+{
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+table.box {
+  color: #fefefe;
+  background-color: #486591;
+  border: none;
+  padding: 1px;
+  width: 100%;
+}
+tr.boxheader {
+  background-color: #e6e6e6;
+}
+td.boxheader {
+  text-align: center;
+  text-decoration: bold;
+}
+tr.boxbody {
+  background-color: #e6e6e6;
+}
